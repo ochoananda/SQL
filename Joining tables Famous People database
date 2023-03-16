@@ -1,0 +1,30 @@
+/* Create table about the people and what they do here */
+CREATE TABLE stars (id INTEGER PRIMARY KEY, name TEXT, age INTEGER);
+INSERT INTO stars VALUES (1, "Ryan Renolds", 46);
+INSERT INTO stars VALUES (2, "Blake Lively", 35);
+INSERT INTO stars VALUES (3, "Beyonce", 40);
+INSERT INTO stars VALUES (4, "JayZ", 45);
+INSERT INTO stars VALUES (5, "Emily Blunt", 41);
+INSERT INTO stars VALUES (6, "John K", 46);
+
+CREATE TABLE talent (id INTEGER PRIMARY KEY, stars_id INTEGER, hobbies TEXT);
+INSERT INTO talent VALUES (1, 1, "movies");
+INSERT INTO talent VALUES (2, 2, "movies");
+INSERT INTO talent VALUES (3, 2, "tv shows");
+INSERT INTO talent VALUES (4, 3, "singer");
+INSERT INTO talent VALUES (5, 4, "rapper");
+INSERT INTO talent VALUES (6, 5, "movies");
+INSERT INTO talent VALUES (7, 6, "movies");
+INSERT INTO talent VALUES (8, 6, "director");
+
+CREATE TABLE marriages (id INTEGER PRIMARY KEY, stars1_id INTEGER, stars2_id INTEGER);
+INSERT INTO marriages VALUES (1, 1,2);
+INSERT INTO marriages VALUES (2, 3, 4);
+INSERT INTO marriages VALUES (3, 5, 6);
+INSERT INTO marriages VALUES (4, 7, 8);
+
+SELECT stars.name, talent.hobbies FROM stars JOIN talent ON stars.id = talent.stars_id;
+
+SELECT a.name, b.name FROM marriages JOIN stars a ON marriages.stars1_id = a.id JOIN stars b ON marriages.stars2_id = b.id;
+
+SELECT a.name, a.age, b.name, b.age FROM marriages JOIN stars a ON marriages.stars1_id = a.id JOIN stars b ON marriages.stars2_id = b.id;
